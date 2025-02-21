@@ -1,4 +1,4 @@
-package com.estudo.multiplesource.domain;
+package com.estudo.multiplesource.domain.fornecedor;
 
 import jakarta.persistence.*;
 

@@ -1,35 +1,23 @@
 package com.estudo.multiplesource.service;
 
-import com.estudo.multiplesource.domain.Cliente;
+import com.estudo.multiplesource.domain.fornecedor.Fornecedor;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.EntityManager;
-
-
 import java.util.List;
 
 @Service
-public class ClienteService {
+public class FornecedorService {
 
-    @Autowired
-    @Qualifier("primaryEntityManager")
-    private EntityManager primaryEntityManager;
 
     @Autowired
     @Qualifier("secondaryEntityManager")
     private EntityManager secondaryEntityManager;
 
-    public List<Cliente> findAll() {
+    public List<Fornecedor> findAll() {
 
-
-
-        List<Cliente> clientes = primaryEntityManager.createNamedQuery("Cliente.findAll", Cliente.class).getResultList();
-
-
-
-
-        return clientes;
+        return secondaryEntityManager.createNamedQuery("Fornecedor.findAll", Fornecedor.class).getResultList();
     }
 }
